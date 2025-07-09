@@ -8,7 +8,9 @@ import {
   FiLinkedin, 
   FiMail, 
   FiPhone, 
-  FiExternalLink 
+  FiExternalLink,
+  FiSun,
+  FiMoon
 } from "react-icons/fi";
 import { 
   FaHtml5, 
@@ -46,6 +48,7 @@ import {
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 import emailjs from '@emailjs/browser';
+
 // Glass card component
 const GlassCard = ({ children, className = "" }) => (
   <div className={`backdrop-blur-lg bg-white/10 dark:bg-gray-900/50 border border-white/20 dark:border-gray-700/50 rounded-xl shadow-lg ${className}`}>
@@ -57,6 +60,15 @@ const App = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
+  const [darkMode, setDarkMode] = useState(() => {
+    // Check for saved theme preference or use system preference
+    if (typeof window !== 'undefined') {
+      const savedMode = localStorage.getItem('darkMode');
+      if (savedMode !== null) return savedMode === 'true';
+      return window.matchMedia('(prefers-color-scheme: dark)').matches;
+    }
+    return false;
+  });
   
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -65,6 +77,17 @@ const App = () => {
   });
   
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+  // Apply dark mode class to document
+  useEffect(() => {
+    document.documentElement.classList.toggle('dark', darkMode);
+    localStorage.setItem('darkMode', darkMode);
+  }, [darkMode]);
 
   // Scroll handler
   const scrollToSection = (id) => {
@@ -170,16 +193,16 @@ const App = () => {
   ];
 
   return (
-    <div className="relative bg-gradient-to-b from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 text-gray-800 dark:text-gray-100 font-sans min-h-screen">
+    <div className="relative bg-gradient-to-b from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 text-gray-800 dark:text-gray-100 font-sans min-h-screen transition-colors duration-300">
       {/* Background gradient */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-indigo-200/20 via-white to-purple-200/20 dark:from-indigo-900/20 dark:via-gray-950 dark:to-purple-900/20"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-indigo-200/20 via-white to-purple-200/20 dark:from-indigo-900/20 dark:via-gray-950 dark:to-purple-900/20 transition-colors duration-300"></div>
       </div>
 
       {/* Floating circles */}
       <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none">
-        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-indigo-300/20 dark:bg-indigo-900/20 blur-3xl"></div>
-        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-purple-300/20 dark:bg-purple-900/20 blur-3xl"></div>
+        <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-indigo-300/20 dark:bg-indigo-900/20 blur-3xl transition-colors duration-300"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-purple-300/20 dark:bg-purple-900/20 blur-3xl transition-colors duration-300"></div>
       </div>
       
       {/* Navbar */}
@@ -208,7 +231,7 @@ const App = () => {
           
           <div className="flex items-center gap-4">
             {/* Desktop Navigation */}
-            <ul className="hidden md:flex space-x-6">
+            <ul className="hidden md:flex space-x-6 items-center">
               {navLinks.map((link) => (
                 <li key={link.id} className="relative">
                   <button
@@ -235,15 +258,52 @@ const App = () => {
                   </button>
                 </li>
               ))}
+
+              {/* Theme Toggle Button */}
+              <motion.button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full bg-white/30 dark:bg-gray-800/30 backdrop-blur-md border border-gray-200 dark:border-gray-700"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Toggle dark mode"
+                title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+              >
+                <motion.div
+                  animate={darkMode ? { rotate: 360 } : { rotate: 0 }}
+                  transition={{ duration: 0.5, type: "spring" }}
+                >
+                  {darkMode ? (
+                    <FiSun className="text-yellow-400" size={18} />
+                  ) : (
+                    <FiMoon className="text-indigo-700" size={18} />
+                  )}
+                </motion.div>
+              </motion.button>
             </ul>
 
             {/* Mobile menu button */}
-            <button 
-              className="md:hidden p-2 text-gray-700 dark:text-gray-300"
-              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            >
-              {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
-            </button>
+            <div className="md:hidden flex items-center gap-2">
+              <motion.button
+                onClick={toggleDarkMode}
+                className="p-2 rounded-full bg-white/30 dark:bg-gray-800/30 backdrop-blur-md border border-gray-200 dark:border-gray-700"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.9 }}
+                aria-label="Toggle dark mode"
+              >
+                {darkMode ? (
+                  <FiSun className="text-yellow-400" size={18} />
+                ) : (
+                  <FiMoon className="text-indigo-700" size={18} />
+                )}
+              </motion.button>
+              
+              <button 
+                className="p-2 text-gray-700 dark:text-gray-300"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? <FiX size={24} /> : <FiMenu size={24} />}
+              </button>
+            </div>
           </div>
         </div>
 
