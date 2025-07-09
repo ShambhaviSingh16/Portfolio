@@ -225,7 +225,7 @@ const App = () => {
               className="text-2xl font-bold tracking-tight text-indigo-700 dark:text-indigo-300 cursor-pointer transition"
               onClick={() => scrollToSection("home")}
             >
-              Shambhavi
+              Portfolio
             </h1>
           </motion.div>
           
@@ -259,43 +259,44 @@ const App = () => {
                 </li>
               ))}
 
-              {/* Theme Toggle Button */}
-              <motion.button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-full bg-white/30 dark:bg-gray-800/30 backdrop-blur-md border border-gray-200 dark:border-gray-700"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Toggle dark mode"
-                title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
-              >
-                <motion.div
-                  animate={darkMode ? { rotate: 360 } : { rotate: 0 }}
-                  transition={{ duration: 0.5, type: "spring" }}
-                >
-                  {darkMode ? (
-                    <FiSun className="text-yellow-400" size={18} />
-                  ) : (
-                    <FiMoon className="text-indigo-700" size={18} />
-                  )}
-                </motion.div>
-              </motion.button>
+              {/* Theme Toggle Button - Updated to make sun white in dark mode */}
+<motion.button
+  onClick={toggleDarkMode}
+  className="p-2 rounded-full bg-white/30 dark:bg-gray-800/30 backdrop-blur-md border border-gray-200 dark:border-gray-700"
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.9 }}
+  aria-label="Toggle dark mode"
+  title={darkMode ? "Switch to light mode" : "Switch to dark mode"}
+>
+  <motion.div
+    animate={darkMode ? { rotate: 360 } : { rotate: 0 }}
+    transition={{ duration: 0.5, type: "spring" }}
+  >
+    {darkMode ? (
+      <FiSun className="text-white" size={18} /> 
+    ) : (
+      <FiMoon className="text-indigo-700" size={18} />
+    )}
+  </motion.div>
+</motion.button>
+
             </ul>
 
             {/* Mobile menu button */}
             <div className="md:hidden flex items-center gap-2">
               <motion.button
-                onClick={toggleDarkMode}
-                className="p-2 rounded-full bg-white/30 dark:bg-gray-800/30 backdrop-blur-md border border-gray-200 dark:border-gray-700"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.9 }}
-                aria-label="Toggle dark mode"
-              >
-                {darkMode ? (
-                  <FiSun className="text-yellow-400" size={18} />
-                ) : (
-                  <FiMoon className="text-indigo-700" size={18} />
-                )}
-              </motion.button>
+  onClick={toggleDarkMode}
+  className="p-2 rounded-full bg-white/30 dark:bg-gray-800/30 backdrop-blur-md border border-gray-200 dark:border-gray-700"
+  whileHover={{ scale: 1.1 }}
+  whileTap={{ scale: 0.9 }}
+  aria-label="Toggle dark mode"
+>
+  {darkMode ? (
+    <FiSun className="text-white" size={18} /> 
+  ) : (
+    <FiMoon className="text-indigo-700" size={18} />
+  )}
+</motion.button>
               
               <button 
                 className="p-2 text-gray-700 dark:text-gray-300"
@@ -583,9 +584,8 @@ const App = () => {
 >
   <img 
     src="https://upload.wikimedia.org/wikipedia/commons/d/d5/Tailwind_CSS_Logo.svg" 
-    className="w-5 h-5" 
+    className={`w-5 h-5 ${darkMode ? 'invert' : ''}`} 
     alt="Tailwind CSS" 
-    style={{ filter: 'brightness(0) invert(1)' }} 
   />
   <span className="text-lg font-medium">Tailwind CSS</span>
 </motion.div>
@@ -830,7 +830,10 @@ const App = () => {
   className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700"
 >
   <img 
-    src="https://www.netlify.com/v3/img/components/logomark-dark.png" 
+    src={darkMode 
+      ? "https://www.netlify.com/v3/img/components/logomark-dark.png" 
+      : "https://www.netlify.com/v3/img/components/logomark-light.png"
+    } 
     className="w-5 h-5" 
     alt="Netlify" 
   />
