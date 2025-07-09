@@ -521,14 +521,14 @@ const App = () => {
           transition={{ delay: 0.8 }}
         >
           <motion.a 
-            href="/shambhavi_singh_updated_resume.pdf" 
-            download="Shambhavi_Singh_Resume.pdf"
-            className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Download Resume
-          </motion.a>
+  href="/Resume.pdf" 
+  download="Shambhavi_Singh_Resume.pdf"
+  className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition"
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+>
+  Check Resume
+</motion.a>
           <motion.button
             onClick={() => scrollToSection("projects")}
             className="border border-indigo-600 text-indigo-600 dark:border-indigo-400 dark:text-indigo-400 font-semibold px-6 py-3 rounded-lg hover:bg-indigo-50 dark:hover:bg-gray-800 transition"
