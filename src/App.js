@@ -1152,7 +1152,7 @@ const App = () => {
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="mb-4 md:mb-0">
-              <h2 className="text-xl font-bold text-indigo-700 dark:text-indigo-300">Shambhavi Singh Hello</h2>
+              <h2 className="text-xl font-bold text-indigo-700 dark:text-indigo-300">Shambhavi Singh</h2>
               <p className="text-sm text-gray-600 dark:text-gray-400"></p>
             </div>
             
