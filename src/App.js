@@ -47,6 +47,8 @@ import {
   SiKeras
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
+import ThankYou from './components/ThankYou';
+import { Routes, Route } from 'react-router-dom';
 import emailjs from '@emailjs/browser';
 
 // Glass card component
@@ -186,6 +188,12 @@ const App = () => {
     }
     return false;
   });
+  const [contactForm, setContactForm] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  });
   
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
@@ -308,6 +316,26 @@ const App = () => {
       logo: "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"
     }
   ];
+  
+
+  // ========== 3. ADD THIS NEW FUNCTION ==========
+  const handleContactSubmit = (e) => {
+    e.preventDefault();
+    const { name, email, subject, message } = contactForm;
+    const mailtoLink = `mailto:sshambhavi89@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(
+      `Name: ${name}\nEmail: ${email}\n\nMessage:\n${message}`
+    )}`;
+    window.location.href = mailtoLink;
+  };
+
+  // ========== 4. ADD THIS HANDLER FUNCTION ==========
+  const handleContactChange = (e) => {
+    const { id, value } = e.target;
+    setContactForm(prev => ({
+      ...prev,
+      [id]: value
+    }));
+  };
 
   return (
     <div className="relative bg-gradient-to-b from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 text-gray-800 dark:text-gray-100 font-sans min-h-screen transition-colors duration-300">
@@ -321,7 +349,9 @@ const App = () => {
         <div className="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-indigo-300/20 dark:bg-indigo-900/20 blur-3xl transition-colors duration-300"></div>
         <div className="absolute bottom-1/4 right-1/4 w-64 h-64 rounded-full bg-purple-300/20 dark:bg-purple-900/20 blur-3xl transition-colors duration-300"></div>
       </div>
-      
+      <Routes>
+      <Route path="/thank-you" element={<ThankYou />} />
+    </Routes>
       {/* Navbar */}
       <motion.nav 
         className={`fixed top-0 left-0 right-0 z-50 backdrop-blur-md transition-all duration-300 ${
@@ -335,16 +365,36 @@ const App = () => {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center h-full">
           <motion.div 
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            <h1
-              className="text-2xl font-bold tracking-tight text-indigo-700 dark:text-indigo-300 cursor-pointer transition"
-              onClick={() => scrollToSection("home")}
-            >
-              Portfolio
-            </h1>
-          </motion.div>
+  whileHover={{ scale: 1.05 }}
+  whileTap={{ scale: 0.95 }}
+  className="flex items-center gap-2"
+>
+  {/* Developer icon */}
+  <div className="w-8 h-8 rounded-full bg-indigo-600 dark:bg-indigo-400 flex items-center justify-center">
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      strokeWidth="2" 
+      strokeLinecap="round" 
+      strokeLinejoin="round"
+      className="w-5 h-5 text-white"
+    >
+      <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z" />
+      <path d="M8 21s4-3 4-9" />
+      <path d="M16 21s-4-3-4-9" />
+      <path d="M12 15c0 3-2 6-4 6s-4-3-4-6 2-6 4-6 4 3 4 6z" />
+    </svg>
+  </div>
+  
+  <h1
+    className="text-2xl font-bold tracking-tight text-indigo-700 dark:text-indigo-300 cursor-pointer transition"
+    onClick={() => scrollToSection("home")}
+  >
+    Portfolio
+  </h1>
+</motion.div>
           
           <div className="flex items-center gap-4">
             {/* Desktop Navigation */}
@@ -1262,59 +1312,42 @@ const App = () => {
                   </div>
                 </div>
                 
-                <div>
-                  <h3 className="text-2xl font-semibold text-indigo-800 dark:text-indigo-300 mb-4">Send Me a Message</h3>
-                  <form className="space-y-4">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
-                      <input
-                        type="text"
-                        id="name"
-                        className="w-full px-4 py-2 bg-white/50 dark:bg-gray-700/50 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder="Your name"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium mb-1">Email</label>
-                      <input
-                        type="email"
-                        id="email"
-                        className="w-full px-4 py-2 bg-white/50 dark:bg-gray-700/50 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder="example@gmail.com"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="subject" className="block text-sm font-medium mb-1">Subject</label>
-                      <input
-                        type="text"
-                        id="subject"
-                        className="w-full px-4 py-2 bg-white/50 dark:bg-gray-700/50 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder="Subject"
-                      />
-                    </div>
-                    
-                    <div>
-                      <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
-                      <textarea
-                        id="message"
-                        rows="4"
-                        className="w-full px-4 py-2 bg-white/50 dark:bg-gray-700/50 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
-                        placeholder="Your message here..."
-                      ></textarea>
-                    </div>
-                    
-                    <motion.button
-                      type="submit"
-                      className="w-full bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition"
-                      whileHover={{ scale: 1.02 }}
-                      whileTap={{ scale: 0.98 }}
-                    >
-                      Send Message
-                    </motion.button>
-                  </form>
-                </div>
+                 <div>
+            <h3 className="text-2xl font-semibold text-indigo-800 dark:text-indigo-300 mb-4">Send Me a Message</h3>
+            <form 
+              className="space-y-4" 
+              action="https://formsubmit.co/sshambhavi89@gmail.com" 
+              method="POST"
+            >
+              <input type="hidden" name="_captcha" value="false" />
+              <input type="hidden" name="_template" value="table" />
+              <input type="hidden" name="_next" value={`${window.location.origin}/thank-you`} />
+              
+              {/* Form fields */}
+              <div>
+                <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  className="w-full px-4 py-2 bg-white/50 dark:bg-gray-700/50 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                  placeholder="Your name"
+                  required
+                />
+              </div>
+              
+              {/* Other form fields (email, subject, message) */}
+              
+              <motion.button
+                type="submit"
+                className="w-full bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                Send Message
+              </motion.button>
+            </form>
+          </div>
               </div>
             </GlassCard>
           </motion.div>
