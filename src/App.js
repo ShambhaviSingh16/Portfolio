@@ -43,11 +43,15 @@ import {
   SiFirebase, 
   SiSupabase,
   SiNetlify,
+  SiNodedotjs,
   SiTensorflow,
   SiKeras
 } from "react-icons/si";
 import { VscCode } from "react-icons/vsc";
 import emailjs from '@emailjs/browser';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import ThankYou from './components/ThankYou';
+
 
 // Glass card component
 const GlassCard = ({ children, className = "" }) => (
@@ -173,7 +177,7 @@ const AnimatedAvatar = () => {
   );
 };
 
-const App = () => {
+const AppContent = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
@@ -186,7 +190,8 @@ const App = () => {
     }
     return false;
   });
-  
+  const [messageSent, setMessageSent] = useState(false);
+  const navigate = useNavigate();
   const heroRef = useRef(null);
   const { scrollYProgress } = useScroll({
     target: heroRef,
@@ -195,17 +200,32 @@ const App = () => {
   
   const yBg = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
 
-  // Toggle dark mode
-  const toggleDarkMode = () => {
-    setDarkMode(!darkMode);
-  };
-
   // Apply dark mode class to document
   useEffect(() => {
     document.documentElement.classList.toggle('dark', darkMode);
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
 
+  // Handle message sent success
+  useEffect(() => {
+    if (messageSent) {
+      navigate('/thank-you');
+      const timer = setTimeout(() => {
+        navigate('/');
+        setMessageSent(false);
+      }, 3000);
+      
+      return () => clearTimeout(timer);
+    }
+  }, [messageSent, navigate]);
+
+
+  // Toggle dark mode
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
+  };
+
+ 
   // Scroll handler
   const scrollToSection = (id) => {
     const section = document.getElementById(id);
@@ -309,7 +329,36 @@ const App = () => {
     }
   ];
 
-  return (
+  const handleSubmit = (e) => {
+  e.preventDefault();
+  const form = e.target;
+  
+  const templateParams = {
+    name: form.name.value,
+    email: form.email.value,
+    title: form.title.value,
+    message: form.message.value,
+    to_name: "Shambhavi Singh", // Your name
+    reply_to: form.email.value,
+    date: new Date().toLocaleString()
+  };
+
+  emailjs.send(
+    process.env.REACT_APP_EMAILJS_SERVICE_ID,
+    process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+    templateParams, // Updated parameters
+    process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+  )
+  .then(() => {
+    setMessageSent(true);
+    form.reset();
+  }, (error) => {
+    console.error('Failed to send message:', error);
+    alert('Failed to send message. Please try again later.');
+  });
+};
+
+    return (
     <div className="relative bg-gradient-to-b from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 text-gray-800 dark:text-gray-100 font-sans min-h-screen transition-colors duration-300">
       {/* Background gradient */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
@@ -577,56 +626,151 @@ const App = () => {
       </section>
 
       {/* About Section */}
-      <section id="about" className="py-20 px-6 md:px-20 relative">
-        <div className="max-w-6xl mx-auto">
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }} 
-            whileInView={{ opacity: 1, x: 0 }} 
-            transition={{ duration: 0.7, type: "spring" }}
+<motion.section 
+  id="about" 
+  className="py-20 px-6 md:px-20 relative overflow-hidden"
+  initial={{ opacity: 0 }}
+  whileInView={{ opacity: 1 }}
+  viewport={{ once: true }}
+  transition={{ duration: 0.8 }}
+>
+  {/* Floating background elements */}
+  <motion.div 
+    className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-indigo-200/20 dark:bg-indigo-900/10 blur-3xl"
+    animate={{
+      scale: [1, 1.2, 1],
+      opacity: [0.7, 0.9, 0.7]
+    }}
+    transition={{
+      duration: 8,
+      repeat: Infinity,
+      ease: "easeInOut"
+    }}
+  />
+  
+  <div className="max-w-6xl mx-auto">
+    <motion.div 
+      initial={{ y: 50, opacity: 0 }}
+      whileInView={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.6, delay: 0.2 }}
+      viewport={{ once: true }}
+    >
+      <h2 className="text-4xl font-bold mb-12 text-gray-900 dark:text-white text-center">
+        <motion.span 
+          className="border-b-4 border-indigo-500 pb-1 inline-block"
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          viewport={{ once: true }}
+        >
+          About Me
+        </motion.span>
+      </h2>
+      
+      <GlassCard className="p-8 md:p-10">
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          {/* Left side - Text content */}
+          <motion.div
+            initial={{ x: -30, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-4xl font-bold mb-10 text-gray-900 dark:text-white">
-              <span className="border-b-4 border-indigo-500 pb-1">About Me</span>
-            </h2>
+            <motion.p 
+              className="text-lg leading-relaxed mb-6 text-gray-700 dark:text-gray-300"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.8 }}
+              viewport={{ once: true }}
+            >
+              I'm an enthusiastic <span className="text-indigo-600 dark:text-indigo-400 font-medium">MCA student</span> from The Oxford College of Engineering , Bangalore with a <span className="text-indigo-600 dark:text-indigo-400 font-medium">BCA background</span> from The Oxford College of Science. I specialize in building <span className="text-indigo-600 dark:text-indigo-400 font-medium">full-stack web applications</span> using modern technologies.
+            </motion.p>
             
-            <GlassCard className="p-8">
-              <div className="grid md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <p className="text-lg leading-relaxed mb-4">
-                    I'm an enthusiastic MCA student from VTU, Bangalore with a BCA background from The Oxford College of Science. I specialize in building full-stack web applications using modern technologies.
-                  </p>
-                  <p className="text-lg leading-relaxed mb-6">
-                    With strong problem-solving abilities and attention to detail, I create efficient, scalable solutions. My excellent communication skills enable effective collaboration in team environments.
-                  </p>
-                  
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-indigo-50 dark:bg-gray-800 p-4 rounded-lg">
-                      <h4 className="font-medium text-indigo-800 dark:text-indigo-300 mb-2">Education</h4>
-                      <p className="text-sm">MCA at VTU Bangalore</p>
-                      <p className="text-sm">BCA at Bangalore University</p>
-                    </div>
-                    <div className="bg-indigo-50 dark:bg-gray-800 p-4 rounded-lg">
-                      <h4 className="font-medium text-indigo-800 dark:text-indigo-300 mb-2">Languages</h4>
-                      <p className="text-sm">English (Fluent)</p>
-                      <p className="text-sm">Hindi (Native)</p>
-                    </div>
-                  </div>
-                </div>
-                
-                <motion.div 
+            <motion.p 
+              className="text-lg leading-relaxed mb-8 text-gray-700 dark:text-gray-300"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1 }}
+              viewport={{ once: true }}
+            >
+              With strong <span className="text-indigo-600 dark:text-indigo-400 font-medium">problem-solving</span> abilities and <span className="text-indigo-600 dark:text-indigo-400 font-medium">attention to detail</span>, I create efficient, scalable solutions. My excellent <span className="text-indigo-600 dark:text-indigo-400 font-medium">communication skills</span> enable effective collaboration in team environments.
+            </motion.p>
+            
+            <motion.div 
+              className="grid grid-cols-2 gap-4"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 1.2 }}
+              viewport={{ once: true }}
+            >
+              <motion.div 
+                className="bg-indigo-50 dark:bg-gray-800 p-5 rounded-xl border border-indigo-100 dark:border-gray-700"
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <h4 className="font-medium text-indigo-800 dark:text-indigo-300 mb-3 flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                  </svg>
+                  Education
+                </h4>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
+                    <span>MCA at The Oxford College of Engineering</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
+                    <span>BCA at The Oxford College of Science</span>
+                  </li>
+                </ul>
+              </motion.div>
+              
+              <motion.div 
+                className="bg-indigo-50 dark:bg-gray-800 p-5 rounded-xl border border-indigo-100 dark:border-gray-700"
+                whileHover={{ y: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                <h4 className="font-medium text-indigo-800 dark:text-indigo-300 mb-3 flex items-center gap-2">
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                  </svg>
+                  Languages
+                </h4>
+                <ul className="space-y-2 text-sm">
+                  <li className="flex items-start gap-2">
+                    <span className="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
+                    <span>English (Fluent)</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
+                    <span>Hindi (Native)</span>
+                  </li>
+                </ul>
+              </motion.div>
+            </motion.div>
+          </motion.div>
+          
+           <motion.div 
                   className="hidden md:block"
                   initial={{ opacity: 0, scale: 0.8 }}
                   whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3, type: "spring" }}
+                  transition={{ delay: 0.3 }}
                   viewport={{ once: true }}
                 >
-                  <AnimatedAvatar />
+                  <div className="relative w-full h-64 bg-indigo-100 dark:bg-gray-700 rounded-xl overflow-hidden">
+                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-500 opacity-20 dark:opacity-30"></div>
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="text-6xl text-indigo-600 dark:text-indigo-400 opacity-30">👩‍💻</div>
+                    </div>
+                  </div>
                 </motion.div>
-              </div>
-            </GlassCard>
-          </motion.div>
+
         </div>
-      </section>
+      </GlassCard>
+    </motion.div>
+  </div>
+</motion.section>
 
       {/* Skills Section */}
       <section id="skills" className="py-20 px-6 md:px-20 bg-white dark:bg-gray-900">
@@ -1284,12 +1428,17 @@ const App = () => {
                 
                 <div>
                   <h3 className="text-2xl font-semibold text-indigo-800 dark:text-indigo-300 mb-4">Send Me a Message</h3>
-                  <form className="space-y-4">
+                  <form 
+                    onSubmit={handleSubmit}
+                    className="space-y-4"
+                  >
                     <div>
                       <label htmlFor="name" className="block text-sm font-medium mb-1">Name</label>
                       <input
                         type="text"
                         id="name"
+                        name="name"
+                        required
                         className="w-full px-4 py-2 bg-white/50 dark:bg-gray-700/50 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="Your name"
                       />
@@ -1300,6 +1449,8 @@ const App = () => {
                       <input
                         type="email"
                         id="email"
+                        name="email"
+                        required
                         className="w-full px-4 py-2 bg-white/50 dark:bg-gray-700/50 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="example@gmail.com"
                       />
@@ -1310,6 +1461,8 @@ const App = () => {
                       <input
                         type="text"
                         id="subject"
+                        name="title"
+                        required
                         className="w-full px-4 py-2 bg-white/50 dark:bg-gray-700/50 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="Subject"
                       />
@@ -1319,7 +1472,9 @@ const App = () => {
                       <label htmlFor="message" className="block text-sm font-medium mb-1">Message</label>
                       <textarea
                         id="message"
+                        name="message"
                         rows="4"
+                        required
                         className="w-full px-4 py-2 bg-white/50 dark:bg-gray-700/50 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
                         placeholder="Your message here..."
                       ></textarea>
@@ -1385,6 +1540,17 @@ const App = () => {
         </div>
       </footer>
     </div>
+  );
+};
+
+const App = () => {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<AppContent />} />
+        <Route path="/thank-you" element={<ThankYou />} />
+      </Routes>
+    </Router>
   );
 };
 
