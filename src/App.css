@@ -1,0 +1,19 @@
+:root {
+  --bg: #ffffff;
+  --text: #0f172a;
+  --accent: #6b46c1;
+  --card: #f4f6fb;
+}
+
+[data-theme="dark"] {
+  --bg: #0b1220;
+  --text: #e6eef8;
+  --accent: #8b5cf6;
+  --card: #071025;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}

@@ -62,7 +62,7 @@ const GlassCard = ({ children, className = "" }) => (
 
 // Typing animation component
 const TypingAnimation = () => {
-  const roles = ["Full Stack Developer", "Web Developer", "Open-Source Contributor", "Software Developer", "AI Enthusiast", "Network Engineer"];
+  const roles = ["Full Stack Developer", "UI/UX Designer", "Open-Source Contributor", "Software Developer", "AI Enthusiast", "Network Engineer", "Web Developer"];
   const [displayedText, setDisplayedText] = useState("");
   const [currentRoleIndex, setCurrentRoleIndex] = useState(0);
   const [isTyping, setIsTyping] = useState(true);
@@ -205,6 +205,12 @@ const AppContent = () => {
     document.documentElement.classList.toggle('dark', darkMode);
     localStorage.setItem('darkMode', darkMode);
   }, [darkMode]);
+useEffect(() => {
+  document.documentElement.setAttribute(
+    "data-theme",
+    darkMode ? "dark" : "light"
+  );
+}, [darkMode]);
 
   // Handle message sent success
   useEffect(() => {
@@ -272,94 +278,112 @@ const AppContent = () => {
 
   const projects = [
     {
-      title: "Institute Student Portal",
-      desc: "Website aiding students, faculty, and guests with access to results, exam schedules, and registration procedures.",
-      stack: "PHP, MySQL, HTML, CSS",
-      link: "#",
-      gif: "https://via.placeholder.com/400x225/6366f1/ffffff?text=Student+Portal"
+      title: "BudgetBuddy",
+      desc: "A Decentralized and Secure Blockchain Ecosystem for Multi-User Expense Sharing Using Ethereum",
+      stack: "React, Firebase, Etherum, Solidity, MetaMask",
+      link: "https://github.com/ShambhaviSingh16/BudgetBuddy",
+      // gif: "https://via.placeholder.com/400x225/6366f1/ffffff?text=Student+Portal"
+    },
+    {
+      title: "Ticket Reservation Portal",
+      desc: "Java-based portal for booking train tickets, managing journeys, and tracking reservations.",
+      stack: "Java, MySQL, JSP, Servlets",
+      link: "https://github.com/ShambhaviSingh16/Online-Reservation-Portal",
+      // gif: "https://via.placeholder.com/400x225/6366f1/ffffff?text=Ticket+Portal"
     },
     {
       title: "College Management System",
       desc: "Enhanced system serving colleges and universities in managing daily tasks with centralized control.",
       stack: "HTML, CSS, JavaScript",
       link: "https://github.com/ShambhaviSingh16/College-Management-System",
-      gif: "https://via.placeholder.com/400x225/6366f1/ffffff?text=College+System"
-    },
-    {
-      title: "Ticket Reservation Portal",
-      desc: "Java-based portal for booking train tickets, managing journeys, and tracking reservations.",
-      stack: "Java, MySQL, JSP, Servlets",
-      link: "#",
-      gif: "https://via.placeholder.com/400x225/6366f1/ffffff?text=Ticket+Portal"
+      // gif: "https://via.placeholder.com/400x225/6366f1/ffffff?text=College+System"
     }
   ];
 
   const certificates = [
     {
-      title: "Full Stack Web Development",
-      issuer: "Udemy",
-      date: "June 2023",
-      link: "#",
+      title: "Software Engineer Intern",
+      issuer: "Paperbill Tech Pvt. Ltd.",
+      date: "October 2025",
+      link: "https://drive.google.com/file/d/1s84iiRcJwmYdCAtzyefKDZoHeiGT0fyp/view?usp=sharing",
       verified: true,
-      logo: "https://www.udemy.com/staticx/udemy/images/v7/logo-udemy.svg"
-    },
-    {
-      title: "Java Programming",
-      issuer: "Coursera",
-      date: "March 2023",
-      link: "#",
-      verified: true,
-      logo: "https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon.png"
-    },
-    {
-      title: "React Advanced Concepts",
-      issuer: "Pluralsight",
-      date: "August 2023",
-      link: "#",
-      verified: true,
-      logo: "https://www.pluralsight.com/etc/clientlibs/pluralsight/main/images/favicons/favicon-96x96.png"
-    },
-    {
-      title: "Cloud Computing Fundamentals",
-      issuer: "AWS",
-      date: "January 2024",
-      link: "#",
-      verified: true,
-      logo: "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"
+      logo: "https://paperbill.in/icons/icon-512x512.png"
     }
+    
+    // ,
+    // {
+    //   title: "Java Programming",
+    //   issuer: "Coursera",
+    //   date: "March 2023",
+    //   link: "#",
+    //   verified: true,
+    //   logo: "https://d3njjcbhbojbot.cloudfront.net/web/images/favicons/apple-touch-icon.png"
+    // },
+    // {
+    //   title: "React Advanced Concepts",
+    //   issuer: "Pluralsight",
+    //   date: "August 2023",
+    //   link: "#",
+    //   verified: true,
+    //   logo: "https://www.pluralsight.com/etc/clientlibs/pluralsight/main/images/favicons/favicon-96x96.png"
+    // },
+    // {
+    //   title: "Cloud Computing Fundamentals",
+    //   issuer: "AWS",
+    //   date: "January 2024",
+    //   link: "#",
+    //   verified: true,
+    //   logo: "https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png"
+    // }
   ];
 
   const handleSubmit = (e) => {
   e.preventDefault();
   const form = e.target;
-  
+
+  if (
+    !process.env.REACT_APP_EMAILJS_SERVICE_ID ||
+    !process.env.REACT_APP_EMAILJS_TEMPLATE_ID ||
+    !process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+  ) {
+    alert("Email service not configured.");
+    return;
+  }
+
   const templateParams = {
     name: form.name.value,
     email: form.email.value,
     title: form.title.value,
     message: form.message.value,
-    to_name: "Shambhavi Singh", // Your name
+    to_name: "Shambhavi Singh",
     reply_to: form.email.value,
     date: new Date().toLocaleString()
   };
 
-  emailjs.send(
-    process.env.REACT_APP_EMAILJS_SERVICE_ID,
-    process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
-    templateParams, // Updated parameters
-    process.env.REACT_APP_EMAILJS_PUBLIC_KEY
-  )
-  .then(() => {
-    setMessageSent(true);
-    form.reset();
-  }, (error) => {
-    console.error('Failed to send message:', error);
-    alert('Failed to send message. Please try again later.');
-  });
+  emailjs
+    .send(
+      process.env.REACT_APP_EMAILJS_SERVICE_ID,
+      process.env.REACT_APP_EMAILJS_TEMPLATE_ID,
+      templateParams,
+      process.env.REACT_APP_EMAILJS_PUBLIC_KEY
+    )
+    .then(() => {
+      setMessageSent(true);
+      form.reset();
+    })
+    .catch(() => {
+      alert("Message failed. Try again later.");
+    });
 };
 
-    return (
-    <div className="relative bg-gradient-to-b from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 text-gray-800 dark:text-gray-100 font-sans min-h-screen transition-colors duration-300">
+
+return (
+  <>
+    <main
+      role="main"
+      className="relative bg-gradient-to-b from-indigo-50 to-white dark:from-gray-900 dark:to-gray-950 text-gray-800 dark:text-gray-100 font-sans min-h-screen transition-colors duration-300"
+    >
+
       {/* Background gradient */}
       <div className="fixed inset-0 -z-10 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-indigo-200/20 via-white to-purple-200/20 dark:from-indigo-900/20 dark:via-gray-950 dark:to-purple-900/20 transition-colors duration-300"></div>
@@ -580,7 +604,7 @@ const AppContent = () => {
           animate={{ opacity: 1 }} 
           transition={{ delay: 0.6, duration: 0.8 }}
         >
-          I build exceptional digital experiences with modern web technologies and clean, efficient code.
+          I am an MCA graduate and Full Stack Developer specializing in Java, React, and scalable web applications.
         </motion.p>
         
         <motion.div
@@ -1154,6 +1178,14 @@ const AppContent = () => {
                     <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" className="w-5 h-5" alt="Canva" />
                     <span className="text-lg font-medium">Canva</span>
                   </motion.div>
+                  <motion.div
+  whileHover={{ scale: 1.05 }}
+  className="flex items-center gap-2 px-4 py-3 bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700"
+>
+  <SiFigma className="text-pink-500 text-xl" />
+  <span className="text-lg font-medium">Figma</span>
+</motion.div>
+
                 </div>
               </GlassCard>
             </div>
@@ -1539,9 +1571,11 @@ const AppContent = () => {
           </div>
         </div>
       </footer>
-    </div>
+    </main>
+  </>
   );
 };
+
 
 const App = () => {
   return (
