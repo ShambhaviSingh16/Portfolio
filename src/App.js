@@ -614,7 +614,7 @@ return (
           transition={{ delay: 0.8 }}
         >
           <motion.a 
-  href="/Shambhavi_____Singh.pdf" 
+  href="/Resume.pdf" 
   download="Shambhavi_Singh.pdf"
   className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition"
   whileHover={{ scale: 1.05 }}
