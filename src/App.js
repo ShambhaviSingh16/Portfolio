@@ -611,8 +611,8 @@ const AppContent = () => {
             <p class="hero-subtext">
               MCA Graduate with hands-on experience across
               <strong> UI/UX Design</strong>,
-              <strong> Frontend</strong>,
-              <strong> Backend</strong> and
+              <strong> Frontend Development </strong>,
+              <strong> Backend Developemnt </strong> and
               <strong> Software testing</strong>.
             </p>
           </motion.p>
@@ -624,13 +624,10 @@ const AppContent = () => {
           >
             <div class="hero-badges">
               <span>Problem Solver</span> |
-              <span> Strong Communicator</span> |
+              <span> Clear Communicator</span> |
               <span> Fluent: English & Hindi</span>
             </div>
-
-
           </motion.p>
-
 
           <motion.div
             className="flex gap-4"
@@ -641,7 +638,7 @@ const AppContent = () => {
             <motion.a
               href="https://drive.google.com/file/d/1sHh813F6QDJZ7DM1x0y70bxj0-LmRNfC/view?usp=drive_link"
               target="_blank"
-  rel="noopener noreferrer"
+              rel="noopener noreferrer"
               className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -707,10 +704,10 @@ const AppContent = () => {
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              MCA graduate from The Oxford College of Engineering, Bangalore, with a strong BCA foundation.
-              I work across <strong>UI/UX design</strong>, <strong>frontend</strong>, <strong>backend</strong>,
-              <strong>full-stack development</strong>, and <strong>software testing</strong>,
-              adapting based on what the product and team need.
+              MCA graduate from <strong>The Oxford College of Engineering, Bangalore,</strong> with hands-on experience across 
+              <strong>UI/UX design</strong>, <strong>frontend</strong>, <strong>backend</strong>,
+              <strong>full-stack development</strong>, and <strong>software testing</strong>.
+              I adapt to different roles based on product needs, focusing on usable interfaces, reliable systems, and clear communication across teams.
             </motion.p>
 
             {/* Highlight Cards */}
@@ -726,8 +723,13 @@ const AppContent = () => {
               >
                 <h4>Multi-Role Ready</h4>
                 <p>
-                  Comfortable working as a UI/UX Designer, Developer, Full-Stack Engineer,
-                  or QA — without being limited to one title.
+                  Comfortable working as a 
+                  <strong> UI/UX Designer</strong>,
+                  <strong> Frontend Developer</strong>,
+                  <strong> Backend Developer</strong>,
+                  <strong> Full-Stack Developer </strong> or
+                  <strong> Software Tester (QA)</strong> — 
+                  adapting based on project needs rather than job titles.
                 </p>
               </motion.div>
 
@@ -741,8 +743,11 @@ const AppContent = () => {
               >
                 <h4>Strong Fundamentals</h4>
                 <p>
-                  Solid academic background combined with real-world project experience,
-                  focusing on scalability, usability, and clean architecture.
+                 Strong academic fundamentals combined with hands-on project experience, focusing on
+                 <strong> clean architecture</strong> ,
+                  <strong> scalability</strong> ,
+                  <strong> usability</strong> and
+                  <strong> maintainable code</strong>.
                 </p>
               </motion.div>
 
@@ -756,25 +761,26 @@ const AppContent = () => {
               >
                 <h4>Clear Communicator</h4>
                 <p>
-                  Fluent in English and Hindi, confident in discussions, explaining ideas,
-                  and collaborating smoothly across technical and non-technical teams.
+                 Fluent in
+                 <strong> English</strong> and
+                  <strong> Hindi</strong> , confident in explaining ideas, participating in discussions, and collaborating effectively across technical and non-technical teams.
                 </p>
               </motion.div>
 
             </div>
             <div className="max-w-4xl mx-auto ">
-            <h3 className="text-2xl font-semibold text-center text-gray-900 dark:text-white mb-6">
-              What I’m Open To
-            </h3>
+              <h3 className="text-2xl font-semibold text-center text-gray-900 dark:text-white mb-6">
+                Roles I’m Open To
+              </h3>
 
-            <div className="flex flex-wrap justify-center gap-4 text-sm">
-              <span className="role-pill">UI/UX Designer</span>
-              <span className="role-pill">Frontend Developer</span>
-              <span className="role-pill">Backend Developer</span>
-              <span className="role-pill">Full Stack Developer</span>
-              <span className="role-pill">Software Tester / QA</span>
+              <div className="flex flex-wrap justify-center gap-4 text-sm">
+                <span className="role-pill">UI/UX Designer</span>
+                <span className="role-pill">Frontend Developer</span>
+                <span className="role-pill">Backend Developer</span>
+                <span className="role-pill">Full Stack Developer</span>
+                <span className="role-pill">Software Tester / QA</span>
+              </div>
             </div>
-          </div>
           </div>
         </motion.section>
 
@@ -1431,9 +1437,9 @@ const AppContent = () => {
 
         {/* Contact Section */}
         <section
-  id="contact"
-  className="py-16 px-4 sm:px-6 md:px-20 bg-indigo-50/30 dark:bg-gray-800/30"
->
+          id="contact"
+          className="py-16 px-4 sm:px-6 md:px-20 bg-indigo-50/30 dark:bg-gray-800/30"
+        >
 
           <div className="max-w-6xl mx-auto">
             <motion.div
@@ -1446,12 +1452,12 @@ const AppContent = () => {
                 <span className="border-b-4 border-indigo-500 pb-1">Get In Touch</span>
               </h2>
 
-             <GlassCard className="p-4 sm:p-6 md:p-8">
+              <GlassCard className="p-4 sm:p-6 md:p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                   <div>
                     <h3 className="text-2xl font-semibold text-indigo-800 dark:text-indigo-300 mb-4">Let's Connect</h3>
                     <p className="text-lg mb-6">
-                      Have a project in mind or want to discuss opportunities? Feel free to reach out!
+                      Have a project, role, or opportunity in mind? I’m always open to meaningful discussions and collaborations.
                     </p>
 
                     <div className="space-y-4">
