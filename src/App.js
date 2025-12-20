@@ -615,7 +615,13 @@ const AppContent = () => {
               <strong> Backend</strong> and
               <strong> Software testing</strong>.
             </p>
-
+          </motion.p>
+          <motion.p
+            className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6, duration: 0.8 }}
+          >
             <div class="hero-badges">
               <span>Problem Solver</span> |
               <span> Strong Communicator</span> |
@@ -633,8 +639,9 @@ const AppContent = () => {
             transition={{ delay: 0.8 }}
           >
             <motion.a
-              href="/Resume.pdf"
-              download="Shambhavi_Singh.pdf"
+              href="https://drive.google.com/file/d/1sHh813F6QDJZ7DM1x0y70bxj0-LmRNfC/view?usp=drive_link"
+              target="_blank"
+  rel="noopener noreferrer"
               className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -670,358 +677,106 @@ const AppContent = () => {
 
         {/* About Section */}
         {/* About Section */}
-<motion.section 
-  id="about" 
-  className="py-20 px-6 md:px-20 relative overflow-hidden"
-  initial={{ opacity: 0 }}
-  whileInView={{ opacity: 1 }}
-  viewport={{ once: true }}
-  transition={{ duration: 0.8 }}
->
-  {/* Floating background elements */}
-  <motion.div 
-    className="absolute -right-20 -top-20 w-64 h-64 rounded-full bg-indigo-200/20 dark:bg-indigo-900/10 blur-3xl"
-    animate={{
-      scale: [1, 1.2, 1],
-      opacity: [0.7, 0.9, 0.7]
-    }}
-    transition={{
-      duration: 8,
-      repeat: Infinity,
-      ease: "easeInOut"
-    }}
-  />
-  
-  <div className="max-w-6xl mx-auto">
-    <motion.div 
-      initial={{ y: 50, opacity: 0 }}
-      whileInView={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.6, delay: 0.2 }}
-      viewport={{ once: true }}
-    >
-      <h2 className="text-4xl font-bold mb-12 text-gray-900 dark:text-white text-center">
-        <motion.span 
-          className="border-b-4 border-indigo-500 pb-1 inline-block"
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+        <motion.section
+          id="about"
+          className="py-24 px-6 md:px-20 relative overflow-hidden"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          About Me
-        </motion.span>
-      </h2>
-      
-      <GlassCard className="p-8 md:p-10">
-        <div className="grid md:grid-cols-2 gap-10 items-center">
-          {/* Left side - Text content */}
+          {/* subtle floating glow */}
           <motion.div
-            initial={{ x: -30, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <motion.p 
-              className="text-lg leading-relaxed mb-6 text-gray-700 dark:text-gray-300"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 0.8 }}
+            className="absolute -top-32 left-1/2 -translate-x-1/2 w-[500px] h-[500px] rounded-full bg-indigo-300/20 dark:bg-indigo-900/20 blur-3xl"
+            animate={{ scale: [1, 1.15, 1] }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut" }}
+          />
+
+          <div className="max-w-5xl mx-auto relative z-10">
+
+            {/* Heading */}
+            <h2 className="text-4xl font-bold text-center text-gray-900 dark:text-white mb-6">
+              <span className="border-b-4 border-indigo-500 pb-1">About Me</span>
+            </h2>
+
+            {/* Intro */}
+            <motion.p
+              className="text-center text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-14 leading-relaxed"
+              initial={{ y: 20, opacity: 0 }}
+              whileInView={{ y: 0, opacity: 1 }}
+              transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              I'm an enthusiastic <span className="text-indigo-600 dark:text-indigo-400 font-medium">MCA student</span> from The Oxford College of Engineering , Bangalore with a <span className="text-indigo-600 dark:text-indigo-400 font-medium">BCA background</span> from The Oxford College of Science. I specialize in building <span className="text-indigo-600 dark:text-indigo-400 font-medium">full-stack web applications</span> using modern technologies.
+              MCA graduate from The Oxford College of Engineering, Bangalore, with a strong BCA foundation.
+              I work across <strong>UI/UX design</strong>, <strong>frontend</strong>, <strong>backend</strong>,
+              <strong>full-stack development</strong>, and <strong>software testing</strong>,
+              adapting based on what the product and team need.
             </motion.p>
-            
-            <motion.p 
-              className="text-lg leading-relaxed mb-8 text-gray-700 dark:text-gray-300"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1 }}
-              viewport={{ once: true }}
-            >
-              With strong <span className="text-indigo-600 dark:text-indigo-400 font-medium">problem-solving</span> abilities and <span className="text-indigo-600 dark:text-indigo-400 font-medium">attention to detail</span>, I create efficient, scalable solutions. My excellent <span className="text-indigo-600 dark:text-indigo-400 font-medium">communication skills</span> enable effective collaboration in team environments.
-            </motion.p>
-            
-            <motion.div 
-              className="grid grid-cols-2 gap-4"
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              transition={{ duration: 0.6, delay: 1.2 }}
-              viewport={{ once: true }}
-            >
-              <motion.div 
-                className="bg-indigo-50 dark:bg-gray-800 p-5 rounded-xl border border-indigo-100 dark:border-gray-700"
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
+
+            {/* Highlight Cards */}
+            <div className="grid md:grid-cols-3 gap-6 mb-16">
+
+              <motion.div
+                className="about-highlight-card"
+                whileHover={{ y: -8 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                viewport={{ once: true }}
               >
-                <h4 className="font-medium text-indigo-800 dark:text-indigo-300 mb-3 flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                  </svg>
-                  Education
-                </h4>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
-                    <span>MCA at The Oxford College of Engineering</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
-                    <span>BCA at The Oxford College of Science</span>
-                  </li>
-                </ul>
+                <h4>Multi-Role Ready</h4>
+                <p>
+                  Comfortable working as a UI/UX Designer, Developer, Full-Stack Engineer,
+                  or QA — without being limited to one title.
+                </p>
               </motion.div>
-              
-              <motion.div 
-                className="bg-indigo-50 dark:bg-gray-800 p-5 rounded-xl border border-indigo-100 dark:border-gray-700"
-                whileHover={{ y: -5 }}
-                transition={{ type: "spring", stiffness: 300 }}
+
+              <motion.div
+                className="about-highlight-card"
+                whileHover={{ y: -8 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                viewport={{ once: true }}
               >
-                <h4 className="font-medium text-indigo-800 dark:text-indigo-300 mb-3 flex items-center gap-2">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
-                  </svg>
-                  Languages
-                </h4>
-                <ul className="space-y-2 text-sm">
-                  <li className="flex items-start gap-2">
-                    <span className="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
-                    <span>English (Fluent)</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <span className="text-indigo-600 dark:text-indigo-400 mt-1">•</span>
-                    <span>Hindi (Native)</span>
-                  </li>
-                </ul>
+                <h4>Strong Fundamentals</h4>
+                <p>
+                  Solid academic background combined with real-world project experience,
+                  focusing on scalability, usability, and clean architecture.
+                </p>
               </motion.div>
-            </motion.div>
-          </motion.div>
-          
-           <motion.div 
-                  className="hidden md:block"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.3 }}
-                  viewport={{ once: true }}
-                >
-                  <div className="relative w-full h-64 bg-indigo-100 dark:bg-gray-700 rounded-xl overflow-hidden">
-                    <div className="absolute inset-0 bg-gradient-to-r from-indigo-400 to-purple-500 opacity-20 dark:opacity-30"></div>
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="text-6xl text-indigo-600 dark:text-indigo-400 opacity-30">👩‍💻</div>
-                    </div>
-                  </div>
-                </motion.div>
 
-        </div>
-      </GlassCard>
-    </motion.div>
-  </div>
-</motion.section>
-
-
-
-        {/* <p>
-                I enjoy understanding user needs, designing intuitive interfaces,
-                building reliable applications, and ensuring quality through structured
-                testing. I communicate ideas clearly and confidently, and I work well
-                in collaborative team environments.
-              </p> */}
-
-        <div className="max-w-4xl mx-auto mb-20">
-          <h3 className="text-2xl font-semibold text-center text-gray-900 dark:text-white mb-6">
-            What I’m Open To
-          </h3>
-
-          <div className="flex flex-wrap justify-center gap-4 text-sm">
-            <span className="role-pill">UI/UX Designer</span>
-            <span className="role-pill">Frontend Developer</span>
-            <span className="role-pill">Backend Developer</span>
-            <span className="role-pill">Full Stack Developer</span>
-            <span className="role-pill">Software Tester / QA</span>
-          </div>
-        </div>
-        {/* <div className="communication-section">
-              <h3>Communication & Collaboration</h3>
-
-              <ul className="communication-points">
-                <li>Clear verbal and written communication across technical and non-technical teams</li>
-                <li>Fluent in English and Hindi, confident in discussions and presentations</li>
-                <li>Comfortable gathering requirements, explaining solutions, and giving updates</li>
-                <li>Strong collaborator who works well with designers, developers, and testers</li>
-              </ul>
-            </div> */}
-        {/* <div className="why-grid">
-          <div className="why-card">
-            🚀
-            <h4>Multi-Role Ready</h4>
-            <p>Comfortable switching between UI/UX, frontend, backend, full stack, and QA roles.</p>
-          </div>
-
-          <div className="why-card">
-            🧠
-            <h4>Strong Fundamentals</h4>
-            <p>Solid academic background with real-world project experience.</p>
-          </div>
-
-          <div className="why-card">
-            🤝
-            <h4>Clear Communicator</h4>
-            <p>Ensures clarity, alignment, and smooth execution across teams.</p>
-          </div>
-
-          <div className="why-card">
-            ⚡
-            <h4>Fast Learner</h4>
-            <p>Quickly adapts to new tools, technologies, and workflows.</p>
-          </div>
-        </div>
-
-
-
-        Journey
-        <div className="relative max-w-4xl mx-auto">
-
-          <h3 className="text-3xl font-semibold text-center text-gray-900 dark:text-white mb-16">
-            My Journey
-          </h3>
-
-          <div className="timeline"> */}
-
-            {/* 10th */}
-            {/* <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h4>10th Grade — Secondary School</h4>
+              <motion.div
+                className="about-highlight-card"
+                whileHover={{ y: -8 }}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                viewport={{ once: true }}
+              >
+                <h4>Clear Communicator</h4>
                 <p>
-                  <strong>School:</strong> XYZ High School<br />
-                  <strong>Year:</strong> 2018<br />
-                  <strong>Score:</strong> 85%
+                  Fluent in English and Hindi, confident in discussions, explaining ideas,
+                  and collaborating smoothly across technical and non-technical teams.
                 </p>
-              </div>
-            </div> */}
+              </motion.div>
 
-            {/* 12th */}
-            {/* <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h4>12th Grade — Higher Secondary</h4>
-                <p>
-                  <strong>School:</strong> XYZ Pre-University College<br />
-                  <strong>Year:</strong> 2020<br />
-                  <strong>Score:</strong> 82%
-                </p>
-              </div>
-            </div> */}
-
-            {/* BCA */}
-            {/* <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h4>Bachelor of Computer Applications (BCA)</h4>
-                <p>
-                  <strong>College:</strong> The Oxford College of Science, Bangalore<br />
-                  <strong>Duration:</strong> 2020 – 2023
-                </p>
-              </div>
-            </div> */}
-
-            {/* MCA */}
-            {/* <div className="timeline-item">
-              <div className="timeline-dot"></div>
-              <div className="timeline-content">
-                <h4>Master of Computer Applications (MCA)</h4>
-                <p>
-                  <strong>College:</strong> The Oxford College of Engineering, Bangalore<br />
-                  <strong>Duration:</strong> 2023 – 2025
-                </p>
-              </div>
             </div>
+            <div className="max-w-4xl mx-auto ">
+            <h3 className="text-2xl font-semibold text-center text-gray-900 dark:text-white mb-6">
+              What I’m Open To
+            </h3>
 
+            <div className="flex flex-wrap justify-center gap-4 text-sm">
+              <span className="role-pill">UI/UX Designer</span>
+              <span className="role-pill">Frontend Developer</span>
+              <span className="role-pill">Backend Developer</span>
+              <span className="role-pill">Full Stack Developer</span>
+              <span className="role-pill">Software Tester / QA</span>
+            </div>
           </div>
-
-        </div> */}
-
-        {/* </div>
-        </section> */}
-
-
-
-        {/* About Section
-<section id="about" className="py-24 px-6 md:px-20">
-  <div className="max-w-5xl mx-auto">
-
-    {/* Heading */}
-        {/* <h2 className="text-4xl font-bold text-center text-white mb-10">
-      About Me
-      <span className="block w-20 h-1 bg-indigo-500 mx-auto mt-4"></span>
-    </h2> */}
-
-        {/* Intro */}
-        {/* <p className="text-center text-lg text-gray-300 max-w-3xl mx-auto mb-20 leading-relaxed">
-      I am a Full Stack Developer with a strong academic background and hands-on
-      experience in building scalable, user-centric applications. I enjoy
-      transforming ideas into clean, maintainable software and continuously
-      improving my technical and problem-solving skills.
-    </p> */}
-
-        {/* Timeline */}
-        {/* <div className="relative border-l border-indigo-500/40 pl-8 space-y-14"> */}
-
-        {/* 10th */}
-        {/* <div className="relative">
-        <span className="absolute -left-[14px] top-1 w-3 h-3 bg-indigo-500 rounded-full"></span>
-        <h3 className="text-xl font-semibold text-indigo-300">
-          10th Grade (Secondary School)
-        </h3>
-        <p className="text-sm text-gray-400 mt-1">
-          <strong>School:</strong> ABC High School<br/>
-          <strong>Year:</strong> 2018<br/>
-          <strong>Score:</strong> 85%
-        </p>
-      </div> */}
-
-        {/* 12th */}
-        {/* <div className="relative">
-        <span className="absolute -left-[14px] top-1 w-3 h-3 bg-indigo-500 rounded-full"></span>
-        <h3 className="text-xl font-semibold text-indigo-300">
-          12th Grade (Higher Secondary)
-        </h3>
-        <p className="text-sm text-gray-400 mt-1">
-          <strong>School:</strong> ABC Pre-University College<br/>
-          <strong>Year:</strong> 2020<br/>
-          <strong>Score:</strong> 82%
-        </p>
-      </div> */}
-
-        {/* BCA */}
-        {/* <div className="relative">
-        <span className="absolute -left-[14px] top-1 w-3 h-3 bg-indigo-500 rounded-full"></span>
-        <h3 className="text-xl font-semibold text-indigo-300">
-          Bachelor of Computer Applications (BCA)
-        </h3>
-        <p className="text-sm text-gray-400 mt-1">
-          <strong>University:</strong> The Oxford College of Science, Bangalore<br/>
-          <strong>Duration:</strong> 2020 – 2023<br/>
-          <strong>Focus:</strong> Programming, Databases, Web Development
-        </p>
-      </div> */}
-
-        {/* MCA */}
-        {/* <div className="relative">
-        <span className="absolute -left-[14px] top-1 w-3 h-3 bg-indigo-500 rounded-full"></span>
-        <h3 className="text-xl font-semibold text-indigo-300">
-          Master of Computer Applications (MCA)
-        </h3>
-        <p className="text-sm text-gray-400 mt-1">
-          <strong>University:</strong> The Oxford College of Engineering, Bangalore<br/>
-          <strong>Duration:</strong> 2023 – 2025<br/>
-          <strong>Focus:</strong> Full Stack Development, Software Engineering
-        </p>
-      </div>
-
-    </div>
-  </div>
-</section> */}
-
-
+          </div>
+        </motion.section>
 
         {/* Skills Section */}
         <section id="skills" className="py-20 px-6 md:px-20 bg-white dark:bg-gray-900">
@@ -1602,7 +1357,7 @@ const AppContent = () => {
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <GlassCard className="p-8">
+                <GlassCard className="p-4 sm:p-6 md:p-8">
                   <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-2">
                     {certificates.map((certificate, index) => (
                       <motion.div
@@ -1675,7 +1430,11 @@ const AppContent = () => {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="py-20 px-6 md:px-20 bg-indigo-50/30 dark:bg-gray-800/30">
+        <section
+  id="contact"
+  className="py-16 px-4 sm:px-6 md:px-20 bg-indigo-50/30 dark:bg-gray-800/30"
+>
+
           <div className="max-w-6xl mx-auto">
             <motion.div
               initial={{ opacity: 0, y: 50 }}
@@ -1687,8 +1446,8 @@ const AppContent = () => {
                 <span className="border-b-4 border-indigo-500 pb-1">Get In Touch</span>
               </h2>
 
-              <GlassCard className="p-8">
-                <div className="grid md:grid-cols-2 gap-8">
+             <GlassCard className="p-4 sm:p-6 md:p-8">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
                   <div>
                     <h3 className="text-2xl font-semibold text-indigo-800 dark:text-indigo-300 mb-4">Let's Connect</h3>
                     <p className="text-lg mb-6">
