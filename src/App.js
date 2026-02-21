@@ -289,6 +289,15 @@ const AppContent = () => {
   ];
   const projects = [
     {
+  title: "Smart Bookmark Manager",
+  desc: "Secure real-time bookmark manager with Google OAuth login, Supabase Row Level Security & cross-tab realtime synchronization for private user data.",
+  stack: ["Next.js", "Supabase", "TypeScript", "Tailwind", "PostgreSQL"],
+  image: "/projects/bookmark.png",
+  live: "https://smart-bookmark-applicationn.vercel.app",
+  code: "https://github.com/ShambhaviSingh16/smart-bookmark-app",
+  highlight: "⚡ Realtime + OAuth"
+},
+    {
       title: "BudgetBuddy",
       desc: "Decentralized expense-sharing platform using Ethereum smart contracts with secure multi-user transactions.",
       stack: ["React", "Firebase", "Solidity", "Ethereum"],
