@@ -52,20 +52,25 @@ import emailjs from '@emailjs/browser';
 import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
 import ThankYou from './components/ThankYou';
 
+// const roles = [
+//   "Software Engineer", 
+//   "Full Stack Developer", 
+//   "Frontend Developer",
+//   "Backend Developer", 
+//   "Software Developer", 
+//   // "UI/UX Designer", 
+//   "Software Tester / QA", 
+//   // "Associate System Engineer", 
+//   // "AI Enthusiast",
+//   "Open-Source Contributor"
+// ];
 const roles = [
-  "Software Developer", 
-  "Associate System Engineer", 
-  "Software Engineer", 
-  "Full Stack Developer", 
-  " Back End Developer", 
-  "UI/UX Designer", 
-  "Software Tester / QA", 
-  "Open-Source Contributor", 
-  "AI Enthusiast", 
-  "Network Engineer", 
-  "Web Developer"
+  "Software Engineer",
+  "Java Developer",
+  "Full Stack Developer",
+  "Backend Developer",
+  "Open-Source Contributor"
 ];
-
 // Glass card component
 const GlassCard = ({ children, className = "" }) => (
   <div className={`backdrop-blur-lg bg-white/10 dark:bg-gray-900/50 border border-white/20 dark:border-gray-700/50 rounded-xl shadow-lg ${className}`}>
@@ -289,14 +294,14 @@ const AppContent = () => {
   ];
   const projects = [
     {
-  title: "Smart Bookmark Manager",
-  desc: "Secure real-time bookmark manager with Google OAuth login, Supabase Row Level Security & cross-tab realtime synchronization for private user data.",
-  stack: ["Next.js", "Supabase", "TypeScript", "Tailwind", "PostgreSQL"],
-  image: "/projects/bookmark.png",
-  live: "https://smart-bookmark-applicationn.vercel.app",
-  code: "https://github.com/ShambhaviSingh16/smart-bookmark-app",
-  highlight: "⚡ Realtime + OAuth"
-},
+      title: "Smart Bookmark Manager",
+      desc: "Secure real-time bookmark manager with Google OAuth login, Supabase Row Level Security & cross-tab realtime synchronization for private user data.",
+      stack: ["Next.js", "Supabase", "TypeScript", "Tailwind", "PostgreSQL"],
+      image: "/projects/bookmark.png",
+      live: "https://smart-bookmark-applicationn.vercel.app",
+      code: "https://github.com/ShambhaviSingh16/smart-bookmark-app",
+      highlight: "⚡ Realtime + OAuth"
+    },
     {
       title: "BudgetBuddy",
       desc: "Decentralized expense-sharing platform using Ethereum smart contracts with secure multi-user transactions.",
@@ -309,7 +314,7 @@ const AppContent = () => {
     },
     {
       title: "Ticket Reservation Portal",
-      desc: "Full-stack train ticket booking system with authentication, admin control, and reservation management.",
+      desc: "Designed and implemented a multi-module ticket reservation system using Java (J2EE), following MVC architecture. Developed authentication flows, database integration, and admin management modules with optimized MySQL queries.",
       stack: ["Java", "JSP", "Servlets", "MySQL"],
       image: "/projects/ticket.png",
       live: "https://shambhavisingh.vercel.app",
@@ -338,33 +343,33 @@ const AppContent = () => {
       logo: "https://paperbill.in/icons/icon-512x512.png"
     },
 
-  {
-    title: "Research Paper Publication – BudgetBuddy",
-    issuer: "International Journal of Combined Research & Development (IJCRD)",
-    date: "August 2025",
-    link: "https://drive.google.com/file/d/1dceKL_Wiy5buugdz0CAjL2wov0RBgZ4-/view?usp=sharing", // optional: replace if you have drive link
-    verified: true,
-    logo: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
-  },
+    {
+      title: "Research Paper Publication – BudgetBuddy",
+      issuer: "International Journal of Combined Research & Development (IJCRD)",
+      date: "August 2025",
+      link: "https://drive.google.com/file/d/1dceKL_Wiy5buugdz0CAjL2wov0RBgZ4-/view?usp=sharing", // optional: replace if you have drive link
+      verified: true,
+      logo: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
+    },
 
-  {
-    title: "NPTEL Certification",
-    issuer: "NPTEL",
-    date: "2025",
-    link: "https://drive.google.com/file/d/1ciPcFMVnQwhvYpBf3ml4HplUZhRjlX75/view?usp=sharing",
-    verified: true,
-    // logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/NPTEL_logo.png"
-    logo: "/projects/nptel.webp"
-  },
+    {
+      title: "NPTEL Certification",
+      issuer: "NPTEL",
+      date: "2025",
+      link: "https://drive.google.com/file/d/1ciPcFMVnQwhvYpBf3ml4HplUZhRjlX75/view?usp=sharing",
+      verified: true,
+      // logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/NPTEL_logo.png"
+      logo: "/projects/nptel.webp"
+    },
 
-  {
-    title: "MOOC Certification",
-    issuer: "MOOC",
-    date: "2025",
-    link: "https://drive.google.com/file/d/11-CI2i8W8nvETzDOxNOLH0Vfl7tk-ydZ/view?usp=sharing",
-    verified: true,
-    logo: "https://cdn-icons-png.flaticon.com/512/3135/3135810.png"
-  }
+    {
+      title: "MOOC Certification",
+      issuer: "MOOC",
+      date: "2025",
+      link: "https://drive.google.com/file/d/11-CI2i8W8nvETzDOxNOLH0Vfl7tk-ydZ/view?usp=sharing",
+      verified: true,
+      logo: "https://cdn-icons-png.flaticon.com/512/3135/3135810.png"
+    }
 
     // ,
     // {
@@ -643,7 +648,7 @@ const AppContent = () => {
           </motion.h1>
 
           <motion.h2
-            className="text-3xl md:text-4xl font-bold text-gray-700 dark:text-gray-300 mb-8 h-12"
+            className="text-3xl md:text-4xl font-bold text-gray-700 dark:text-gray-300 mb-8 h-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4 }}
@@ -652,28 +657,30 @@ const AppContent = () => {
           </motion.h2>
 
           <motion.p
-            className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8"
+            className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-5"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
             <p class="hero-subtext">
-              MCA Graduate with hands-on experience across
-              <strong> UI/UX Design</strong>,
-              <strong> Frontend Development </strong>,
-              <strong> Backend Developemnt </strong> and
-              <strong> Software testing</strong>.
+              MCA graduate and Software Engineer with hands-on experience building
+              scalable web applications using
+              <strong> Java, JSP, Servlets, React and MySQL </strong>. Experienced in developing production-ready modules during internship
+              and implementing structured solutions following
+              <strong> Object-Oriented Programming, MVC architecture and SDLC practices</strong>.
+              {/* Experienced in building scalable systems using 
+            <strong> Java, JSP, Servlets, MySQL, React, and modern deployment practices.</strong> */}
             </p>
           </motion.p>
           <motion.p
-            className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-8"
+            className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto mb-6"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6, duration: 0.8 }}
           >
             <div className="hero-badges">
               <span>Problem Solver</span> |
-              <span> Clear Communicator</span> |
+              <span> <strong>Clear Communicator</strong></span> |
               <span> Fluent: English & Hindi</span>
             </div>
           </motion.p>
@@ -685,7 +692,7 @@ const AppContent = () => {
             transition={{ delay: 0.8 }}
           >
             <motion.a
-              href="https://drive.google.com/file/d/1PnggdA3NHFPcVB9sqNHztrzwDulQvo6A/view?usp=sharing"
+              href="https://drive.google.com/file/d/19OWhEycj3sQKYS-JWNX_WSSGqnh3stMr/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition"
@@ -705,7 +712,7 @@ const AppContent = () => {
           </motion.div>
 
           <motion.div
-            className="mt-12 text-3xl text-indigo-600 dark:text-indigo-400 cursor-pointer"
+            className="mt-6 text-3xl text-indigo-600 dark:text-indigo-400 cursor-pointer"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.2 }}
@@ -725,7 +732,7 @@ const AppContent = () => {
         {/* About Section */}
         <motion.section
           id="about"
-          className="py-24 px-6 md:px-20 relative overflow-hidden"
+          className="py-14 px-6 md:px-20 relative overflow-hidden"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -747,20 +754,20 @@ const AppContent = () => {
 
             {/* Intro */}
             <motion.p
-              className="text-center text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-14 leading-relaxed"
+              className="text-center text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto mb-10 leading-relaxed"
               initial={{ y: 20, opacity: 0 }}
               whileInView={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.6 }}
               viewport={{ once: true }}
             >
-              MCA graduate from <strong>The Oxford College of Engineering, Bangalore,</strong> with hands-on experience across 
-              <strong>UI/UX design</strong>, <strong>frontend</strong>, <strong>backend</strong>,
-              <strong>full-stack development</strong>, and <strong>software testing</strong>.
-              I adapt to different roles based on product needs, focusing on usable interfaces, reliable systems, and clear communication across teams.
+              I am an MCA graduate from<strong> The Oxford College of Engineering </strong>with strong academic performance and hands-on industry experience as a
+              <strong> Software Engineer Intern</strong>. My core strength lies in<strong> Java-based application development </strong>, where I build structured, scalable systems across both backend and full-stack environments.
+              I focus on writing clean, maintainable code, designing efficient database schemas,
+              and implementing reliable application modules that align with real-world engineering practices.
             </motion.p>
 
             {/* Highlight Cards */}
-            <div className="grid md:grid-cols-3 gap-6 mb-16">
+            <div className="grid md:grid-cols-3 gap-6 mb-3">
 
               <motion.div
                 className="about-highlight-card"
@@ -770,15 +777,15 @@ const AppContent = () => {
                 transition={{ delay: 0.1 }}
                 viewport={{ once: true }}
               >
-                <h4>Multi-Role Ready</h4>
+                <h4>Java & Application Development</h4>
                 <p>
-                  Comfortable working as a 
-                  <strong> UI/UX Designer</strong>,
-                  <strong> Frontend Developer</strong>,
-                  <strong> Backend Developer</strong>,
-                  <strong> Full-Stack Developer </strong> or
-                  <strong> Software Tester (QA)</strong> — 
-                  adapting based on project needs rather than job titles.
+                  Strong understanding
+                  <strong> Object-Oriented Programming</strong>,
+                  <strong> MVC architecture</strong>,
+                  <strong> RESTful API design </strong>and
+                  <strong> database schema modeling </strong> using
+                  <strong> MySQL</strong>.
+                  Experienced in building modular web applications with clean separation of concerns.
                 </p>
               </motion.div>
 
@@ -790,13 +797,14 @@ const AppContent = () => {
                 transition={{ delay: 0.2 }}
                 viewport={{ once: true }}
               >
-                <h4>Strong Fundamentals</h4>
+                <h4>Industry Experience</h4>
                 <p>
-                 Strong academic fundamentals combined with hands-on project experience, focusing on
-                 <strong> clean architecture</strong> ,
-                  <strong> scalability</strong> ,
-                  <strong> usability</strong> and
-                  <strong> maintainable code</strong>.
+                  Worked as a
+                  <strong> Software Engineer Intern </strong>where I contributed to
+                  <strong> production-ready web application modules</strong>,
+                  <strong> implemented backend logic</strong>,
+                  <strong> integrated databases </strong> and
+                  <strong> collaborated across SDLC phases </strong>including development, testing and deployment.
                 </p>
               </motion.div>
 
@@ -808,16 +816,17 @@ const AppContent = () => {
                 transition={{ delay: 0.3 }}
                 viewport={{ once: true }}
               >
-                <h4>Clear Communicator</h4>
+                <h4>Strong Fundamentals</h4>
                 <p>
-                 Fluent in
-                 <strong> English</strong> and
-                  <strong> Hindi</strong> , confident in explaining ideas, participating in discussions, and collaborating effectively across technical and non-technical teams.
+                  Solid foundation in
+                  <strong> Data Structures & Algorithms </strong>,
+                  <strong> DBMS </strong> and
+                  <strong> Software Engineering principles</strong>. Comfortable explaining technical concepts clearly and approaching problems logically under pressure.
                 </p>
               </motion.div>
 
             </div>
-            <div className="max-w-4xl mx-auto ">
+            {/* <div className="max-w-4xl mx-auto ">
               <h3 className="text-2xl font-semibold text-center text-gray-900 dark:text-white mb-6">
                 Roles I’m Open To
               </h3>
@@ -829,7 +838,7 @@ const AppContent = () => {
                 <span className="role-pill">Full Stack Developer</span>
                 <span className="role-pill">Software Tester / QA</span>
               </div>
-            </div>
+            </div> */}
           </div>
         </motion.section>
 
@@ -1585,6 +1594,30 @@ const AppContent = () => {
                           </a>
                         </div>
                       </motion.div>
+                      <motion.div
+  className="flex items-center gap-4 p-4 rounded-lg hover:bg-indigo-50/50 dark:hover:bg-gray-700/50 transition"
+  whileHover={{ x: 5 }}
+>
+  <div className="p-3 bg-indigo-100 dark:bg-gray-700 rounded-full">
+  <img
+    src="https://upload.wikimedia.org/wikipedia/commons/1/19/LeetCode_logo_black.png"
+    alt="LeetCode"
+    className="w-5 h-5 object-contain"
+  />
+</div>
+
+  <div>
+    <h4 className="font-medium">LeetCode</h4>
+    <a
+      href="https://leetcode.com/u/ShambhaviSingh16/"
+      target="_blank"
+      rel="noopener noreferrer"
+      className="text-indigo-600 dark:text-indigo-400 hover:underline"
+    >
+      https://leetcode.com/u/ShambhaviSingh16/
+    </a>
+  </div>
+</motion.div>
                     </div>
                   </div>
 
