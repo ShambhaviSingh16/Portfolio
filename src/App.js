@@ -336,7 +336,35 @@ const AppContent = () => {
       link: "https://drive.google.com/file/d/1s84iiRcJwmYdCAtzyefKDZoHeiGT0fyp/view?usp=sharing",
       verified: true,
       logo: "https://paperbill.in/icons/icon-512x512.png"
-    }
+    },
+
+  {
+    title: "Research Paper Publication – BudgetBuddy",
+    issuer: "International Journal of Combined Research & Development (IJCRD)",
+    date: "August 2025",
+    link: "https://drive.google.com/file/d/1dceKL_Wiy5buugdz0CAjL2wov0RBgZ4-/view?usp=sharing", // optional: replace if you have drive link
+    verified: true,
+    logo: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
+  },
+
+  {
+    title: "NPTEL Certification",
+    issuer: "NPTEL",
+    date: "2025",
+    link: "https://drive.google.com/file/d/1ciPcFMVnQwhvYpBf3ml4HplUZhRjlX75/view?usp=sharing",
+    verified: true,
+    // logo: "https://upload.wikimedia.org/wikipedia/commons/9/92/NPTEL_logo.png"
+    logo: "/projects/nptel.webp"
+  },
+
+  {
+    title: "MOOC Certification",
+    issuer: "MOOC",
+    date: "2025",
+    link: "https://drive.google.com/file/d/11-CI2i8W8nvETzDOxNOLH0Vfl7tk-ydZ/view?usp=sharing",
+    verified: true,
+    logo: "https://cdn-icons-png.flaticon.com/512/3135/3135810.png"
+  }
 
     // ,
     // {
