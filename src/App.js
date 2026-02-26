@@ -303,16 +303,6 @@ const AppContent = () => {
       highlight: "⚡ Realtime + OAuth"
     },
     {
-      title: "BudgetBuddy",
-      desc: "Decentralized expense-sharing platform using Ethereum smart contracts with secure multi-user transactions.",
-      stack: ["React", "Firebase", "Solidity", "Ethereum"],
-      image: "/projects/budgetbuddy.png",
-      live: "https://shambhavisingh.vercel.app", // MUST NOT be null
-      code: "https://github.com/ShambhaviSingh16/BudgetBuddy",
-      highlight: "🔐 Blockchain",
-
-    },
-    {
       title: "Ticket Reservation Portal",
       desc: "Designed and implemented a multi-module ticket reservation system using Java (J2EE), following MVC architecture. Developed authentication flows, database integration, and admin management modules with optimized MySQL queries.",
       stack: ["Java", "JSP", "Servlets", "MySQL"],
@@ -322,11 +312,21 @@ const AppContent = () => {
       highlight: "🚆 Full Stack"
     },
     {
+      title: "BudgetBuddy",
+      desc: "Decentralized expense-sharing platform using Ethereum smart contracts with secure multi-user transactions.",
+      stack: ["React", "Firebase", "Solidity", "Ethereum"],
+      image: "/projects/budgetbuddy.png",
+      // live: "https://shambhavisingh.vercel.app", // MUST NOT be null
+      code: "https://github.com/ShambhaviSingh16/BudgetBuddy",
+      highlight: "🔐 Blockchain",
+
+    },
+    {
       title: "College Management System",
       desc: "Web-based system for managing student records, departments, and academic workflows along with the library department and notice board.",
       stack: ["HTML", "CSS", "JavaScript"],
       image: "/projects/college.png",
-      live: "https://shambhavisingh.vercel.app",
+      // live: "https://shambhavisingh.vercel.app",
       code: "https://github.com/ShambhaviSingh16/College-Management-System",
       highlight: "🎓 Academic Project"
     }
@@ -341,15 +341,6 @@ const AppContent = () => {
       link: "https://drive.google.com/file/d/1s84iiRcJwmYdCAtzyefKDZoHeiGT0fyp/view?usp=sharing",
       verified: true,
       logo: "https://paperbill.in/icons/icon-512x512.png"
-    },
-
-    {
-      title: "Research Paper Publication – BudgetBuddy",
-      issuer: "International Journal of Combined Research & Development (IJCRD)",
-      date: "August 2025",
-      link: "https://drive.google.com/file/d/1dceKL_Wiy5buugdz0CAjL2wov0RBgZ4-/view?usp=sharing", // optional: replace if you have drive link
-      verified: true,
-      logo: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
     },
 
     {
@@ -369,8 +360,15 @@ const AppContent = () => {
       link: "https://drive.google.com/file/d/11-CI2i8W8nvETzDOxNOLH0Vfl7tk-ydZ/view?usp=sharing",
       verified: true,
       logo: "https://cdn-icons-png.flaticon.com/512/3135/3135810.png"
+    },
+{
+      title: "Research Paper Publication – BudgetBuddy",
+      issuer: "International Journal of Combined Research & Development (IJCRD)",
+      date: "August 2025",
+      link: "https://drive.google.com/file/d/1dceKL_Wiy5buugdz0CAjL2wov0RBgZ4-/view?usp=sharing", // optional: replace if you have drive link
+      verified: true,
+      logo: "https://cdn-icons-png.flaticon.com/512/3135/3135755.png"
     }
-
     // ,
     // {
     //   title: "Java Programming",
