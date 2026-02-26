@@ -317,7 +317,7 @@ const AppContent = () => {
       desc: "Designed and implemented a multi-module ticket reservation system using Java (J2EE), following MVC architecture. Developed authentication flows, database integration, and admin management modules with optimized MySQL queries.",
       stack: ["Java", "JSP", "Servlets", "MySQL"],
       image: "/projects/ticket.png",
-      live: "https://shambhavisingh.vercel.app",
+      live: "https://trackease-njtn.onrender.com",
       code: "https://github.com/ShambhaviSingh16/Online-Reservation-Portal",
       highlight: "🚆 Full Stack"
     },
