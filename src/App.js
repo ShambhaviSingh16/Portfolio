@@ -296,7 +296,7 @@ const AppContent = () => {
     {
       title: "Smart Bookmark Manager",
       desc: "Secure real-time bookmark manager with Google OAuth login, Supabase Row Level Security & cross-tab realtime synchronization for private user data.",
-      stack: ["Next.js", "Supabase", "TypeScript", "Tailwind", "PostgreSQL"],
+      stack: ["Next.js", "Supabase", "TypeScript", "Tailwind", "PostgreSQL", "Vercel"],
       image: "/projects/bookmark.png",
       live: "https://smart-bookmark-applicationn.vercel.app",
       code: "https://github.com/ShambhaviSingh16/smart-bookmark-app",
@@ -304,8 +304,9 @@ const AppContent = () => {
     },
     {
       title: "Ticket Reservation Portal",
-      desc: "Designed and implemented a multi-module ticket reservation system using Java (J2EE), following MVC architecture. Developed authentication flows, database integration, and admin management modules with optimized MySQL queries.",
-      stack: ["Java", "JSP", "Servlets", "MySQL"],
+      // desc: "Full-stack train ticket reservation system built using Java (J2EE) following MVC architecture. Implemented user and admin authentication, ticket booking workflows, and PostgreSQL database integration with live deployment on Render.",
+      desc: "Developed a full-stack train ticket reservation system using Java (J2EE) with MVC architecture. Built authentication, ticket booking, and admin management modules with PostgreSQL integration and live deployment on Render.",
+      stack: ["Java", "JSP", "Servlets", "PostgreSQL"],
       image: "/projects/ticket.png",
       live: "https://trackease-njtn.onrender.com",
       code: "https://github.com/ShambhaviSingh16/Online-Reservation-Portal",
@@ -324,7 +325,7 @@ const AppContent = () => {
     {
       title: "College Management System",
       desc: "Web-based system for managing student records, departments, and academic workflows along with the library department and notice board.",
-      stack: ["HTML", "CSS", "JavaScript"],
+      stack: ["HTML", "CSS", "JavaScript", "PHP", "MYSQL"],
       image: "/projects/college.png",
       // live: "https://shambhavisingh.vercel.app",
       code: "https://github.com/ShambhaviSingh16/College-Management-System",
