@@ -692,7 +692,7 @@ const AppContent = () => {
             transition={{ delay: 0.8 }}
           >
             <motion.a
-              href="https://drive.google.com/file/d/19OWhEycj3sQKYS-JWNX_WSSGqnh3stMr/view?usp=sharing"
+              href="https://drive.google.com/file/d/1JGXUfr-hFseBgZn0DHE0UGye03mqUvFE/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               className="bg-indigo-600 text-white font-semibold px-6 py-3 rounded-lg shadow hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600 transition"
