@@ -322,6 +322,15 @@ const AppContent = () => {
       highlight: "🔐 Blockchain",
 
     },
+  {
+    title: "FocusFlow – Productivity Timer",
+    desc: "A distraction-free productivity web app implementing the Pomodoro technique with focus sessions, break cycles, task management, persistent progress tracking using LocalStorage, and a clean responsive UI.",
+    stack: ["HTML", "CSS", "JavaScript", "Vercel"],
+    image: "/projects/focusflow.png",
+    live: "https://focusflow-productivity-timer.vercel.app/",
+    code: "https://github.com/ShambhaviSingh16/focusflow-productivity-timer",
+    highlight: "⏱ Productivity Tool"
+  },
     {
       title: "College Management System",
       desc: "Web-based system for managing student records, departments, and academic workflows along with the library department and notice board.",
